@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ravish Systems | The Art of Technology</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;500&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-cream: #F9F7F2;
+            --royal-purple: #2D1B4D;
+            --vibrant-violet: #7C3AED;
+            --gold-leaf: #D4AF37;
+            --text-dark: #1A1A1A;
+            --text-light: #666666;
+            --transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { background-color: var(--bg-cream); color: var(--text-dark); overflow-x: hidden; font-family: 'Inter', sans-serif; }
+
+        h1, h2, h3, .logo { font-family: 'Cinzel', serif; text-transform: uppercase; letter-spacing: 3px; }
+        i { font-family: 'Playfair Display', serif; font-style: italic; }
+
+        /* --- Luxury Navigation --- */
+        nav {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 2rem 5%; position: fixed; width: 100%; top: 0;
+            background: rgba(249, 247, 242, 0.9); backdrop-filter: blur(10px);
+            z-index: 1000; border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .logo { font-size: 1.2rem; font-weight: 700; color: var(--royal-purple); }
+        .logo span { color: var(--gold-leaf); }
+
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a { 
+            text-decoration: none; color: var(--text-light); font-size: 0.75rem; 
+            font-weight: 500; cursor: pointer; transition: var(--transition);
+        }
+        .nav-links a:hover, .nav-links a.active { color: var(--royal-purple); border-bottom: 1px solid var(--gold-leaf); }
+
+        /* --- Hero Architecture --- */
+        main { margin-top: 80px; }
+        .page-header { height: 60vh; position: relative; overflow: hidden; display: flex; align-items: center; justify-content: center; text-align: center; color: white; }
+        .page-header img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: -1; filter: brightness(0.6); }
+
+        .section-container { padding: 8rem 10%; }
+        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
+        
+        /* --- Premium UI Components --- */
+        .image-box { position: relative; width: 100%; height: 500px; overflow: hidden; box-shadow: 20px 20px 0 var(--gold-leaf); }
+        .image-box img { width: 100%; height: 100%; object-fit: cover; transition: var(--transition); }
+        .image-box:hover img { transform: scale(1.1); }
+
+        .btn-gold {
+            background: var(--royal-purple); color: white; padding: 1.5rem 3.5rem;
+            border: none; cursor: pointer; font-family: 'Cinzel'; font-size: 0.8rem;
+            letter-spacing: 2px; transition: var(--transition); position: relative;
+        }
+        .btn-gold:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(45, 27, 77, 0.2); }
+
+        .card-stack { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; }
+        .luxury-card { background: white; padding: 3rem; border: 1px solid #eee; transition: var(--transition); }
+        .luxury-card:hover { border-color: var(--gold-leaf); transform: translateY(-10px); }
+
+        /* --- Specific Page Styles --- */
+        .news-item { border-bottom: 1px solid #ddd; padding: 2rem 0; display: flex; justify-content: space-between; align-items: center; }
+        .news-date { font-family: 'Cinzel'; font-size: 0.8rem; color: var(--gold-leaf); }
+
+        .fade-in { animation: fadeIn 1.2s forwards; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+        @media (max-width: 900px) { .grid-2 { grid-template-columns: 1fr; } .page-header h1 { font-size: 2.5rem; } }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="logo">RAVISH <span>SYSTEMS</span></div>
+        <ul class="nav-links">
+            <li><a onclick="route('home')" id="link-home" class="active">HOME</a></li>
+            <li><a onclick="route('about')" id="link-about">ABOUT</a></li>
+            <li><a onclick="route('bespoke')" id="link-bespoke">BESPOKE</a></li>
+            <li><a onclick="route('expertise')" id="link-expertise">EXPERTISE</a></li>
+            <li><a onclick="route('customers')" id="link-customers">CUSTOMERS</a></li>
+            <li><a onclick="route('news')" id="link-news">NEWS</a></li>
+            <li><a onclick="route('contact')" id="link-contact">CONTACT</a></li>
+        </ul>
+    </nav>
+
+    <main id="app-root">
+        </main>
+
+    <script>
+        const content = {
+            home: `
+                <section class="page-header fade-in">
+                    <img src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=1500" alt="Hero">
+                    <div style="z-index: 1;">
+                        <p style="letter-spacing: 5px; margin-bottom: 1rem;">CRAFTING DIGITAL LUXURY</p>
+                        <h1 style="font-size: 4rem;">If You Can <i>Dream</i> It,<br>We Can <i>Create</i> It.</h1>
+                    </div>
+                </section>
+                <section class="section-container grid-2 fade-in">
+                    <div>
+                        <h2>The New Standard <br>In Systems.</h2>
+                        <p style="margin: 2rem 0; color: var(--text-light); line-height: 2;">
+                            Ravish Systems brings the world of high-end design to the realm of technical architecture. 
+                            We specialize in bespoke software solutions that are as beautiful as they are functional.
+                        </p>
+                        <button class="btn-gold" onclick="route('bespoke')">EXPLORE THE COLLECTION</button>
+                    </div>
+                    <div class="image-box">
+                        <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b?auto=format&fit=crop&q=80&w=1000">
+                    </div>
+                </section>
+            `,
+            about: `
+                <section class="section-container fade-in">
+                    <center>
+                        <p style="color: var(--gold-leaf); letter-spacing: 3px;">OUR STORY</p>
+                        <h1 style="margin-bottom: 4rem;">The Atelier of Code</h1>
+                    </center>
+                    <div class="grid-2">
+                        <div class="image-box"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1000"></div>
+                        <div>
+                            <h3>Innovation in <i>Every</i> Byte</h3>
+                            <p style="margin-top: 1.5rem; color: var(--text-light); line-height: 2;">
+                                Born from a legacy of luxury invitation design, Ravish Systems was founded to bring 
+                                the same level of artisan craftsmanship to the world of Full-Stack Development and AI. 
+                                We don't just build websites; we build digital legacies.
+                            </p>
+                        </div>
+                    </div>
+                </section>
+            `,
+            bespoke: `
+                <section class="section-padding fade-in">
+                    <center style="padding-top: 5rem;"><h1>Bespoke Collections</h1></center>
+                    <div class="section-container card-stack">
+                        <div class="luxury-card">
+                            <h4 style="color: var(--gold-leaf); margin-bottom: 1rem;">01</h4>
+                            <h3>Enterprise Couture</h3>
+                            <p style="margin-top: 1rem; color: var(--text-light);">Custom ERP and CRM systems designed with an intuitive, luxury interface.</p>
+                        </div>
+                        <div class="luxury-card">
+                            <h4 style="color: var(--gold-leaf); margin-bottom: 1rem;">02</h4>
+                            <h3>Interactive PWAs</h3>
+                            <p style="margin-top: 1rem; color: var(--text-light);">Mobile experiences that feel like high-end native applications.</p>
+                        </div>
+                        <div class="luxury-card">
+                            <h4 style="color: var(--gold-leaf); margin-bottom: 1rem;">03</h4>
+                            <h3>Cloud Architectures</h3>
+                            <p style="margin-top: 1rem; color: var(--text-light);">High-security AWS infrastructure with military-grade encryption.</p>
+                        </div>
+                    </div>
+                </section>
+            `,
+            expertise: `
+                <section class="section-container fade-in">
+                    <h2>Technical Expertise</h2>
+                    <div class="grid-2" style="margin-top: 4rem;">
+                        <ul style="list-style: none; line-height: 3; font-family: 'Cinzel'; color: var(--royal-purple);">
+                            <li style="border-bottom: 1px solid var(--gold-leaf);">→ JAVA SPRING BOOT</li>
+                            <li style="border-bottom: 1px solid var(--gold-leaf);">→ ANGULAR & REACT MASTER</li>
+                            <li style="border-bottom: 1px solid var(--gold-leaf);">→ MARIADB & POSTGRESQL</li>
+                            <li style="border-bottom: 1px solid var(--gold-leaf);">→ AWS CLOUD INFRASTRUCTURE</li>
+                        </ul>
+                        <div class="image-box" style="box-shadow: -20px 20px 0 var(--royal-purple);"><img src="https://images.unsplash.com/photo-1518770660439-4636190af475?auto=format&fit=crop&q=80&w=1000"></div>
+                    </div>
+                </section>
+            `,
+            customers: `
+                <section class="section-container fade-in">
+                    <center>
+                        <h1>Distinguished Clientele</h1>
+                        <p style="margin-top: 2rem; color: var(--text-light);">Trusted by global industry leaders and visionary entrepreneurs.</p>
+                        <div class="grid-2" style="margin-top: 5rem; opacity: 0.7;">
+                            <h3>Fortune 500 Brands</h3>
+                            <h3>Luxury Retailers</h3>
+                            <h3>Tech Innovators</h3>
+                            <h3>Private Equity</h3>
+                        </div>
+                    </center>
+                </section>
+            `,
+            news: `
+                <section class="section-container fade-in">
+                    <h1>Press & Insights</h1>
+                    <div style="margin-top: 4rem;">
+                        <div class="news-item">
+                            <div><h3>The Future of Bespoke Tech</h3><p>Published in Tech Weekly</p></div>
+                            <span class="news-date">APRIL 2026</span>
+                        </div>
+                        <div class="news-item">
+                            <div><h3>Security Meets Aesthetics</h3><p>Ravish Systems Annual Report</p></div>
+                            <span class="news-date">MARCH 2026</span>
+                        </div>
+                    </div>
+                </section>
+            `,
+            contact: `
+                <section class="section-container fade-in">
+                    <div class="grid-2">
+                        <div>
+                            <h1 style="font-size: 3rem;">Let's Begin <i>The</i> Dialogue.</h1>
+                            <p style="margin-top: 2rem; line-height: 2;">Our consultants are ready to translate your vision into a digital masterpiece.</p>
+                        </div>
+                        <div style="background: white; padding: 3rem; border: 1px solid var(--gold-leaf);">
+                            <input type="text" placeholder="FULL NAME" style="width: 100%; padding: 1rem; margin-bottom: 1rem; border: none; border-bottom: 1px solid #ddd; outline: none;">
+                            <input type="email" placeholder="EMAIL ADDRESS" style="width: 100%; padding: 1rem; margin-bottom: 1rem; border: none; border-bottom: 1px solid #ddd; outline: none;">
+                            <textarea placeholder="YOUR VISION" rows="5" style="width: 100%; padding: 1rem; border: none; border-bottom: 1px solid #ddd; outline: none;"></textarea>
+                            <button class="btn-gold" style="width: 100%; margin-top: 2rem;">SUBMIT INQUIRY</button>
+                        </div>
+                    </div>
+                </section>
+            `
+        };
+
+        function route(page) {
+            const root = document.getElementById('app-root');
+            root.innerHTML = content[page];
+            document.querySelectorAll('.nav-links a').forEach(link => link.classList.remove('active'));
+            document.getElementById(`link-${page}`).classList.add('active');
+            window.scrollTo(0, 0);
+        }
+
+        window.onload = () => route('home');
+    </script>
+</body>
+</html>
